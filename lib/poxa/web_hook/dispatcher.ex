@@ -10,7 +10,7 @@ defmodule Poxa.WebHook.Dispatcher do
   alias Poxa.CryptoHelper
   require Logger
 
-  @timeout 1500
+  @timeout 17
 
   @doc false
   def start_link do
