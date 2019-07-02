@@ -27,7 +27,7 @@ defmodule Poxa.Mixfile do
       {:mimic, "~> 1.0", only: :test},
       {:pusher_client, github: "edgurgel/pusher_client", only: :test},
       {:pusher, "~> 0.1", only: :test},
-      {:distillery, "~> 1.4", runtime: false},
+      {:distillery, "~> 1.5.5", runtime: false},
       {:conform, "~> 2.0"},
       {:httpoison, "~> 0.9"},
       {:ex2ms, "~> 1.5"},
