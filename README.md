@@ -92,15 +92,16 @@ use Mix.Config
 
 config :poxa,
   port: 4567,
-  app_key: "123456789",
-  app_secret: "987654321",
-  app_id: "theid"
+  app_key: "9 2504f0f2094c66ddf61",
+  app_secret: "c3e321556bff8bf10041",
+  app_id: "729298",
+  web_hook: "localhost:3000/pusher/webhook"
 ```
 
 And run:
 
 ```console
-elixir -pa _build/dev/consolidated -S mix run --config my_config.exs --no-halt
+elixir -pa _build/dev/consolidated -S mix run --config custom-config.exs --no-halt
 ```
 
 And if you want SSL, try something like this on your configuration file:
@@ -110,9 +111,10 @@ use Mix.Config
 
 config :poxa,
   port: 4567,
-  app_key: "123456789",
-  app_secret: "987654321",
-  app_id: "theid",
+  app_key: "9 2504f0f2094c66ddf61",
+  app_secret: "c3e321556bff8bf10041",
+  app_id: "729298",
+  web_hook: "localhost:3000/pusher/webhook",
   ssl: [enabled: true,
         port: 8443,
         cacertfile: "priv/ssl/server-ca.crt",
