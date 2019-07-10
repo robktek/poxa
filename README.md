@@ -302,3 +302,34 @@ Thanks to [@bastos](https://github.com/bastos) for the project name :heart:!
 * [Waffle Takeout](https://takeout.waffle.io/)
 * [Tinfoil Security](https://tinfoilsecurity.com/)
 * Add your project/service here! Send a PR! :tada:
+
+
+##Add-on config
+In case `_build/prod/rel/poxa/releases/0.8.1/poxa.conf` not existed, Change config in `_build/prod/rel/poxa/releases/0.8.1/sys.config`
+
+Default config for poxa
+```
+# HTTP Port
+# If not set, will use value of PORT environment variable
+poxa.port = 4567
+
+# Pusher app key
+# If not set, will use value of POXA_APP_KEY environment variable
+poxa.app_key = "92504f0f2094c66ddf61"
+
+# Pusher secret
+# If not set, will use value of POXA_SECRET environment variable
+poxa.app_secret = "c3e321556bff8bf10041"
+
+# Pusher app id
+# If not set, will use value of POXA_APP_ID environment variable
+poxa.app_id = "729298"
+
+# Registry adapter
+# If not set, will use value of POXA_REGISTRY_ADAPTER environment variable
+poxa.registry_adapter = "gproc"
+
+# Web hook endpoint
+# If not set, will use value of WEB_HOOK environment variable
+poxa.web_hook = "http://10.148.0.11:3000/pusher/webhook"
+```
