@@ -8,6 +8,8 @@ defmodule Poxa.PresenceChannel do
 
   More info at: http://pusher.com/docs/rest_api#method-get-users
   """
+  require Logger
+
   @spec users(binary) :: [binary | integer]
   def users(channel) do
     for {user_id, _} <- Poxa.registry.unique_subscriptions(channel), do: user_id
@@ -24,6 +26,7 @@ defmodule Poxa.PresenceChannel do
   """
   @spec my_user_id(binary) :: {binary, map} | nil
   def my_user_id(channel) do
+    Logger.debug "--------------------- My user Id #{channel}"
     case Poxa.registry.fetch(channel) do
       {user_id, _} -> user_id
       _ -> nil

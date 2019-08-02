@@ -4,7 +4,7 @@ defmodule Poxa.PusherEvent do
 
   Take a look at http://pusher.com/docs/pusher_protocol#events for more info
   """
-
+  require Logger
   alias Poxa.PresenceSubscription
   import Poison, only: [encode!: 1]
 
@@ -161,10 +161,12 @@ defmodule Poxa.PusherEvent do
   """
   @spec build_client_event(map, binary) :: {:ok, Poxa.PusherEvent.t} | {:error, atom}
   def build_client_event(%{"event" => name, "channel" => channel, "data" => data}, socket_id) do
+    Logger.debug "--------------------- Build Client Event Name: #{name} Channel #{channel}"
     user_id = Poxa.PresenceChannel.my_user_id(channel)
     build_event([channel], data, name, socket_id, user_id)
   end
   def build_client_event(%{"name" => name, "channel" => channel, "data" => data}, socket_id) do
+    Logger.debug "--------------------- Build Client Event Name: #{name} Channel #{channel}"
     user_id = Poxa.PresenceChannel.my_user_id(channel)
     build_event([channel], data, name, socket_id, user_id)
   end
