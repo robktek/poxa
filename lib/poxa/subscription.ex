@@ -75,6 +75,7 @@ defmodule Poxa.Subscription do
   @spec unsubscribe!(term) :: {:ok, binary}
   def unsubscribe!(data) do
     channel = data["channel"]
+    Logger.debug "-------------------------Unsubscribe to channel #{channel}"
     if Channel.member?(channel, self()) do
       if Channel.presence?(channel) do
         PresenceSubscription.unsubscribe!(channel);

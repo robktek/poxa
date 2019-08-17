@@ -3,7 +3,6 @@ defmodule Poxa.WebHook.Handler do
   This module is a event handler that deals with events as they happen
   and then adds them to the web hook event table.
   """
-
   use GenEvent
   alias Poxa.WebHook.EventData
   alias Poxa.WebHook.EventTable

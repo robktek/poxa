@@ -92,6 +92,7 @@ defmodule Poxa.WebsocketHandler do
     {:reply, {:text, reply}, req, state}
   end
   defp handle_pusher_event("pusher:unsubscribe", decoded_json, req, %State{socket_id: socket_id} = state) do
+    Logger.debug "Unsubscribe Channel Request"
     {:ok, channel} = Subscription.unsubscribe! decoded_json["data"]
     Event.notify(:unsubscribed, %{socket_id: socket_id, channel: channel})
     {:ok, req, state}
@@ -107,6 +108,8 @@ defmodule Poxa.WebsocketHandler do
     if Channel.private_or_presence?(channel) and Channel.member?(channel, self()) do
       PusherEvent.publish(event)
       Event.notify(:client_event_message, %{socket_id: socket_id, channels: event.channels, name: event.name, data: event.data, user_id: event.user_id})
+    else
+      Logger.info ">>>>>>>>>>>>>> Can not handle Channel Event: #{event.name} , #{event.data}"
     end
     {:ok, req, state}
   end
