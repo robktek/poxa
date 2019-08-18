@@ -12,14 +12,14 @@ defmodule Poxa.PresenceChannel do
 
   @spec users(binary) :: [binary | integer]
   def users(channel) do
-    for {user_id, _} <- Poxa.registry.unique_subscriptions(channel), do: user_id
+    for {user_id, _} <- Poxa.registry().unique_subscriptions(channel), do: user_id
   end
 
   @doc """
   Returns the number of unique users on a presence channel
   """
   @spec user_count(binary) :: non_neg_integer
-  def user_count(channel), do: channel |> users |> Enum.count
+  def user_count(channel), do: channel |> users |> Enum.count()
 
   @doc """
   Returns user data for a presence channel
